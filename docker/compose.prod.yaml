@@ -1,7 +1,7 @@
-name: fullstack
+name: fullstack-prod
 
 networks:
-  fullstack:
+  fullstack-prod:
     driver: bridge
     enable_ipv6: false
 
@@ -9,19 +9,16 @@ services:
   envoy:
     image: bitnami/envoy:latest
     networks:
-      - fullstack
+      - fullstack-prod
     volumes:
-      - ./envoy.yaml:/opt/bitnami/envoy/conf/envoy.yaml
-#    ports:
-#      - "9099:9099"
-#      - "9100:9100"
+      - ./envoy.prod.yaml:/opt/bitnami/envoy/conf/envoy.yaml
 
   nginx:
     image: nginx:alpine
     networks:
-      - fullstack
+      - fullstack-prod
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx.prod.conf:/etc/nginx/nginx.conf
     ports:
       - "8080:80"
 
@@ -30,15 +27,11 @@ services:
       context: ../
       dockerfile: apps/backend/Dockerfile
     networks:
-      - fullstack
-#    ports:
-#      - "50051:50051"
+      - fullstack-prod
 
   frontend:
     build:
       context: ../
       dockerfile: apps/frontend/Dockerfile
     networks:
-      - fullstack
-#    ports:
-#      - "4200:80"
+      - fullstack-prod
