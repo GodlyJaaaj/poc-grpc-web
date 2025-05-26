@@ -3,7 +3,7 @@
   "description": "Example Monorepo with Vue 3 frontend, NestJS backend with gRPC API",
   "version": "1.0.0",
   "author": {
-    "name": "Serhii Mykkhailovskyi",
+    "name": "Serhii Mykhailovskyi",
     "email": "sergio@smounters.com"
   },
   "license": "MIT",
