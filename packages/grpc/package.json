@@ -1,0 +1,52 @@
+{
+  "name": "@fullstack-monorepo/grpc",
+  "version": "1.0.0",
+  "author": {
+    "name": "Serhii Mykkhailovskyi",
+    "email": "sergio@smounters.com"
+  },
+  "license": "MIT",
+  "prettier": "./.prettierrc.json",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "proto:generate": "tsx gen-proto.ts",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build": "pnpm run proto:generate && pnpm run build:cjs && pnpm run build:esm"
+  },
+  "files": [
+    "proto/**/*",
+    "dist/**/*"
+  ],
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    "./*": {
+      "import": "./dist/esm/*.js",
+      "require": "./dist/cjs/*.js"
+    },
+    "./proto/*": "./proto/*",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/esm/*"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@protobuf-ts/runtime": "^2.x",
+    "@protobuf-ts/runtime-rpc": "^2.x"
+  },
+  "dependencies": {
+    "@nestjs/microservices": "^11.1.1",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@protobuf-ts/plugin": "^2.10.0",
+    "@protobuf-ts/protoc": "^2.10.0",
+    "commander": "^11.1.0",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.19.4"
+  }
+}

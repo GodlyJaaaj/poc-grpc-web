@@ -1,0 +1,30 @@
+{
+  "name": "fullstack-monorepo",
+  "description": "Example Monorepo with Vue 3 frontend, NestJS backend with gRPC API",
+  "version": "1.0.0",
+  "author": {
+    "name": "Serhii Mykkhailovskyi",
+    "email": "sergio@smounters.com"
+  },
+  "license": "MIT",
+  "prettier": "./.prettierrc.json",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "find ./ \\( -name \"node_modules\" -o -name \"dist\" \\) -type d -prune -exec rm -rf {} +",
+    "build:grpc": "pnpm -F @fullstack-monorepo/grpc build",
+    "build:frontend": "pnpm -F @fullstack-monorepo/frontend build",
+    "build:backend": "pnpm -F @fullstack-monorepo/backend build",
+    "build": "pnpm build:grpc && pnpm build:frontend && pnpm build:backend"
+  },
+  "dependencies": {
+    "tsx": "^4.19.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+}

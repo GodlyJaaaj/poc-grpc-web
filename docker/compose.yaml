@@ -1,0 +1,44 @@
+name: fullstack
+
+networks:
+  fullstack:
+    driver: bridge
+    enable_ipv6: false
+
+services:
+  envoy:
+    image: bitnami/envoy:latest
+    networks:
+      - fullstack
+    volumes:
+      - ./envoy.yaml:/opt/bitnami/envoy/conf/envoy.yaml
+#    ports:
+#      - "9099:9099"
+#      - "9100:9100"
+
+  nginx:
+    image: nginx:alpine
+    networks:
+      - fullstack
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8080:80"
+
+  backend:
+    build:
+      context: ../
+      dockerfile: apps/backend/Dockerfile
+    networks:
+      - fullstack
+#    ports:
+#      - "50051:50051"
+
+  frontend:
+    build:
+      context: ../
+      dockerfile: apps/frontend/Dockerfile
+    networks:
+      - fullstack
+#    ports:
+#      - "4200:80"

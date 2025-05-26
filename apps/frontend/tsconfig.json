@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "allowImportingTsExtensions": false,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "composite": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*", "src/*.vue"],
+    },
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/frontend.tsbuildinfo"
+  },
+  "include": [
+    "src/*.ts",
+    "src/*.vue",
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "vite.config.*",
+    "vue-shims.d.ts"
+  ],
+  "exclude": ["node_modules", "src/**/__tests__/*"]
+}

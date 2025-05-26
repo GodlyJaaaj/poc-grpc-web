@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "dist/cjs",
+    "declaration": true,
+    "sourceMap": true,
+    "rootDir": "src",
+    "baseUrl": "./"
+  },
+  "include": ["src"]
+}
