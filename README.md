@@ -20,7 +20,7 @@ Example monorepo showcasing a Vue 3 frontend and a NestJS backend connected via 
 
 This repository is an example project demonstrating enterprise-grade API design using gRPC. It includes:
 
-* A **NestJS** backend exposing gRPC services.
+* A **NestJS** backend exposing gRPC services with reflection enabled.
 * A **Vue 3 + Vite** frontend consuming those services via gRPC-Web.
 * Shared **packages/grpc** containing `.proto` files and generated TypeScript clients.
 * Dockerized **Envoy** and **Nginx** proxies with separate configs for development and production.
@@ -33,6 +33,7 @@ This repository is an example project demonstrating enterprise-grade API design 
 * **Vue 3** (+ Vite)
 * **NestJS**
 * **gRPC** & **gRPC-Web** via `@protobuf-ts`
+* **grpcurl** ([GitHub](https://github.com/fullstorydev/grpcurl)) for gRPC reflection and debugging
 * **pnpm**
 * **Docker** & **Docker Compose**
 * **Envoy**
@@ -78,6 +79,20 @@ Then in separate terminals:
 ```bash
 pnpm -F @fullstack-monorepo/backend start:dev   # Backend on localhost:50051
 pnpm -F @fullstack-monorepo/frontend start:dev  # Frontend on localhost:4200 (HMR on 5173)
+```
+
+**Verify gRPC reflection** (health check):
+
+```bash
+grpcurl -plaintext localhost:50051 grpc.health.v1.Health/Check
+```
+
+Expected response:
+
+```json
+{
+  "status": "SERVING"
+}
 ```
 
 Proxies:

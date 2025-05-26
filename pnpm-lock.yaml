@@ -30,6 +30,9 @@ importers:
       '@grpc/proto-loader':
         specifier: ^0.7.15
         version: 0.7.15
+      '@grpc/reflection':
+        specifier: ^1.0.4
+        version: 1.0.4(@grpc/grpc-js@1.13.4)
       '@nestjs/common':
         specifier: ^11.1.1
         version: 11.1.2(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -397,6 +400,11 @@ packages:
     resolution: {integrity: sha512-tMXdRCfYVixjuFK+Hk0Q1s38gV9zDiDJfWL3h1rv4Qc39oILCu1TRTDt7+fGUI8K4G1Fj125Hx/ru3azECWTyQ==}
     engines: {node: '>=6'}
     hasBin: true
+
+  '@grpc/reflection@1.0.4':
+    resolution: {integrity: sha512-znA8v4AviOD3OPOxy11pxrtP8k8DanpefeTymS8iGW1fVr1U2cHuzfhYqDPHnVNDf4qvF9E25KtSihPy2DBWfQ==}
+    peerDependencies:
+      '@grpc/grpc-js': ^1.8.21
 
   '@inquirer/checkbox@4.1.8':
     resolution: {integrity: sha512-d/QAsnwuHX2OPolxvYcgSj7A9DO9H6gVOy2DvBTx+P2LH2iRTo/RSGV3iwCzW024nP9hw98KIuDmdyhZQj1UQg==}
@@ -2878,6 +2886,12 @@ snapshots:
       long: 5.3.2
       protobufjs: 7.4.0
       yargs: 17.7.2
+
+  '@grpc/reflection@1.0.4(@grpc/grpc-js@1.13.4)':
+    dependencies:
+      '@grpc/grpc-js': 1.13.4
+      '@grpc/proto-loader': 0.7.15
+      protobufjs: 7.4.0
 
   '@inquirer/checkbox@4.1.8(@types/node@22.15.21)':
     dependencies:

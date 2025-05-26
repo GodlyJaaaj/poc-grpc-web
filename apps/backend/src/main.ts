@@ -1,7 +1,8 @@
 import { AppModule } from '@/app.module';
+import { ReflectionService } from '@grpc/reflection';
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { Transport } from '@nestjs/microservices';
+import { type MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { dirname, join, resolve } from 'path';
 import dotenv from 'dotenv';
 
@@ -19,7 +20,7 @@ function protoPath(packageName: string, protoName: string, splitPath: boolean = 
 const logger = new Logger('Main');
 
 async function bootstrap() {
-  const app = await NestFactory.createMicroservice(
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
     {
       transport: Transport.GRPC,
@@ -33,7 +34,10 @@ async function bootstrap() {
         loader: {
           includeDirs: [basePath],
         },
-      }
+        onLoadPackageDefinition: (pkg, server) => {
+          new ReflectionService(pkg).addToServer(server);
+        },
+      },
     }
   );
   app.useLogger(process.env.NODE_ENV && process.env.NODE_ENV !== 'production'
