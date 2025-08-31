@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimal gRPC-Web + Vite: Counter</title>
+    <style>
+      body { font-family: sans-serif; padding: 16px; }
+      .row { margin: 8px 0; display: flex; gap: 8px; align-items: center; }
+      button { padding: 6px 10px; }
+      input { padding: 6px 10px; width: 120px; }
+      #value { font-size: 1.4em; font-weight: bold; }
+      pre { background: #f6f8fa; padding: 10px; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <h1>Counter (gRPC-Web)</h1>
+
+    <div class="row">
+      Value: <span id="value">-</span>
+      <button id="btn-get">Get</button>
+    </div>
+
+    <div class="row">
+      <button id="btn-inc">+1</button>
+      <button id="btn-dec">-1</button>
+    </div>
+
+    <div class="row">
+      <input id="num" type="number" placeholder="value" value="5" />
+      <button id="btn-add">Add</button>
+      <button id="btn-sub">Subtract</button>
+      <button id="btn-reset">Reset</button>
+    </div>
+
+    <pre id="out"></pre>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

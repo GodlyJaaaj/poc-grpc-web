@@ -1,0 +1,52 @@
+syntax = "proto3";
+package counter;
+
+// Service de compteur qui permet différentes opérations
+service Counter {
+  // Obtenir la valeur actuelle du compteur
+  rpc GetValue (GetValueRequest) returns (CounterValue);
+
+  // Ajouter une valeur au compteur
+  rpc Add (AddRequest) returns (CounterValue);
+
+  // Soustraire une valeur du compteur
+  rpc Subtract (SubtractRequest) returns (CounterValue);
+
+  // Réinitialiser le compteur à une valeur spécifique
+  rpc Reset (ResetRequest) returns (CounterValue);
+
+  // Incrémenter le compteur de 1
+  rpc Increment (IncrementRequest) returns (CounterValue);
+
+  // Décrémenter le compteur de 1
+  rpc Decrement (DecrementRequest) returns (CounterValue);
+}
+
+// Requête vide pour obtenir la valeur actuelle
+message GetValueRequest {}
+
+// Requête pour ajouter une valeur
+message AddRequest {
+  int64 value = 1;
+}
+
+// Requête pour soustraire une valeur
+message SubtractRequest {
+  int64 value = 1;
+}
+
+// Requête pour réinitialiser le compteur
+message ResetRequest {
+  int64 value = 1; // Nouvelle valeur pour le compteur
+}
+
+// Requête vide pour incrémenter de 1
+message IncrementRequest {}
+
+// Requête vide pour décrémenter de 1
+message DecrementRequest {}
+
+// Réponse contenant la valeur actuelle du compteur
+message CounterValue {
+  int64 value = 1; // Valeur actuelle du compteur
+}

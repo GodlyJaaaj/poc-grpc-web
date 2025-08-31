@@ -51,7 +51,7 @@ if (!protoFiles.length) {
 }
 
 cleanOutput(OUT_BASE);
-console.log('⚙️  Generating protobuf-ts code → src/protobuf');
+console.log('⚙️  Generating protobuf-ts code → src');
 const protoc = getProtocPath();
 try {
   const cmd =   [
@@ -61,8 +61,8 @@ try {
     `--ts_out=${OUT_BASE}`,
     `--ts_opt=ts_nocheck,eslint_disable,generate_dependencies`,
     ...protoFiles,
-  ].join(' ')
-  execSync(cmd);
+  ].join(' ');
+  execSync(cmd, { stdio: 'inherit' });
   } catch (error) {
   console.error(`❌ Error: ${error}`);
   process.exit(1);

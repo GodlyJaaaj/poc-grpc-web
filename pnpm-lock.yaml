@@ -157,6 +157,56 @@ importers:
         specifier: ^4.19.4
         version: 4.19.4
 
+  packages/my-grpc:
+    dependencies:
+      '@protobuf-ts/runtime':
+        specifier: ^2.x
+        version: 2.11.0
+      '@protobuf-ts/runtime-rpc':
+        specifier: ^2.x
+        version: 2.11.0
+    devDependencies:
+      '@protobuf-ts/plugin':
+        specifier: ^2.10.0
+        version: 2.11.0
+      '@protobuf-ts/protoc':
+        specifier: ^2.10.0
+        version: 2.11.0
+      commander:
+        specifier: ^11.1.0
+        version: 11.1.0
+      rimraf:
+        specifier: ^6.0.1
+        version: 6.0.1
+      tsx:
+        specifier: ^4.19.4
+        version: 4.19.4
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  web:
+    dependencies:
+      '@my/grpc':
+        specifier: workspace:*
+        version: link:../packages/my-grpc
+      '@protobuf-ts/grpcweb-transport':
+        specifier: ^2.10.0
+        version: 2.11.0
+      '@protobuf-ts/runtime':
+        specifier: ^2.10.0
+        version: 2.11.0
+      '@protobuf-ts/runtime-rpc':
+        specifier: ^2.10.0
+        version: 2.11.0
+    devDependencies:
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+      vite:
+        specifier: ^6.3.5
+        version: 6.3.5(@types/node@22.15.21)(terser@5.39.2)(tsx@4.19.4)
+
 packages:
 
   '@angular-devkit/core@19.2.6':

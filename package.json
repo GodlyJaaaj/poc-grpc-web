@@ -14,10 +14,9 @@
   ],
   "scripts": {
     "clean": "find ./ \\( -name \"node_modules\" -o -name \"dist\" \\) -type d -prune -exec rm -rf {} +",
-    "build:grpc": "pnpm -F @fullstack-monorepo/grpc build",
-    "build:frontend": "pnpm -F @fullstack-monorepo/frontend build",
-    "build:backend": "pnpm -F @fullstack-monorepo/backend build",
-    "build": "pnpm build:grpc && pnpm build:frontend && pnpm build:backend"
+    "build:grpc": "pnpm -F @my/grpc build",
+    "build:web": "pnpm -F web build",
+    "build": "pnpm build:grpc && pnpm build:web"
   },
   "dependencies": {
     "tsx": "^4.19.4"
